@@ -99,44 +99,176 @@ QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical   // 当滚动条滚
     <property name="editTriggers">
      <set>QAbstractItemView::NoEditTriggers</set>
     </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::MultiSelection</enum>
+    </property>
    </widget>
    <widget class="QPushButton" name="redBtn">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>40</y>
-      <width>75</width>
+      <x>120</x>
+      <y>30</y>
+      <width>100</width>
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#redBtn{
+background:white;
+border:1px solid rgb(255, 84, 92);
+border-radius:5px;
+padding:2px 4px;
+color:rgb(255, 84, 92);
+}
+
+QPushButton#redBtn:checked{
+background:rgb(255, 84, 92);
+color:white;
+}</string>
+    </property>
     <property name="text">
      <string>red</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="blueBtn">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>40</y>
-      <width>75</width>
+      <x>230</x>
+      <y>30</y>
+      <width>100</width>
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#blueBtn{
+background:white;
+border:1px solid #3288E8;
+border-radius:5px;
+padding:2px 4px;
+color:#3288E8;
+}
+
+QPushButton#blueBtn:checked{
+background:#3288E8;
+color:white;
+}</string>
+    </property>
     <property name="text">
      <string>blue</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="yellowBtn">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>40</y>
+      <x>340</x>
+      <y>30</y>
+      <width>100</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#yellowBtn{
+background:white;
+border:1px solid rgb(255, 226, 6);
+border-radius:5px;
+padding:2px 4px;
+color:rgb(255, 226, 6);
+}
+
+QPushButton#yellowBtn:checked{
+background:rgb(255, 226, 6);
+color:white;
+}</string>
+    </property>
+    <property name="text">
+     <string>yellow</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="allBtn">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>100</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#allBtn{
+background:white;
+border:1px solid gray;
+border-radius:5px;
+padding:2px 4px;
+color:gray;
+}
+
+QPushButton#allBtn:checked{
+background:gray;
+color:white;
+}</string>
+    </property>
+    <property name="text">
+     <string>all</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="setRedBtn">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>30</y>
       <width>75</width>
       <height>23</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#setRedBtn{
+border:1px solid rgb(255, 84, 92);
+border-radius:5px;
+padding:2px 4px;
+background:rgb(255, 84, 92);
+color:white;
+}</string>
+    </property>
     <property name="text">
-     <string>yellow</string>
+     <string>set red</string>
     </property>
    </widget>
   </widget>

@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "itemdelegate.h"
 #include "itemdef.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -10,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     initData();
+    updateButtonNum();
 
     m_delegate = new ItemDelegate(this);
     m_filterButtonGroup = new QButtonGroup(this);
@@ -17,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // 设置互斥
     m_filterButtonGroup->setExclusive(true);
 
+    m_filterButtonGroup->addButton(ui->allBtn);
     m_filterButtonGroup->addButton(ui->redBtn);
     m_filterButtonGroup->addButton(ui->blueBtn);
     m_filterButtonGroup->addButton(ui->yellowBtn);
@@ -56,7 +59,7 @@ void MainWindow::initData()
 
         itemData.name = QString("Name %1").arg(i);
         itemData.tel = QString("TEL:1331234567%1").arg(i);
-        int randNum = rand()% 4;
+        int randNum = rand()% 3;
         ItemStatus itemStatus;
         switch (randNum) {
         case 0:
@@ -77,4 +80,85 @@ void MainWindow::initData()
 
         m_model->appendRow(Item);      //追加Item
     }
+}
+
+void MainWindow::onButtonClicked(QAbstractButton *button)
+{// 当前点击的按钮
+
+    qDebug() << button->text();
+
+}
+
+void MainWindow::updateButtonNum()
+{
+    ui->allBtn->setText(tr("all %1").arg(totalNum));
+    ui->redBtn->setText(tr("red %1").arg(redNum));
+    ui->blueBtn->setText(tr("blue %1").arg(blueNum));
+    ui->yellowBtn->setText(tr("yellow %1").arg(yellowNum));
+}
+
+void MainWindow::on_redBtn_clicked()
+{
+    if(m_proxyModel)
+    {
+        m_proxyModel->setFilterFixedString(QString::number(S_RED));
+    }
+}
+
+void MainWindow::on_allBtn_clicked()
+{
+    if(m_proxyModel)
+    {
+        m_proxyModel->setFilterFixedString(QString());
+    }
+}
+
+void MainWindow::on_blueBtn_clicked()
+{
+    if(m_proxyModel)
+    {
+        m_proxyModel->setFilterFixedString(QString::number(S_BLUE));
+    }
+}
+
+void MainWindow::on_yellowBtn_clicked()
+{
+    if(m_proxyModel)
+    {
+        m_proxyModel->setFilterFixedString(QString::number(S_YELLOW));
+    }
+}
+
+void MainWindow::on_setRedBtn_clicked()
+{
+    QModelIndexList modelIndexList = ui->listView->selectionModel()->selectedIndexes();
+    QModelIndexList sourceIndexList;
+    foreach (QModelIndex modelIndex, modelIndexList){
+        sourceIndexList<<m_proxyModel->mapToSource(modelIndex); //获取源model的modelIndex
+    }
+
+//    g_proxyModel->setDynamicSortFilter(false);
+    foreach (QModelIndex sourceIndex, sourceIndexList){
+        ItemStatus status = (ItemStatus)(sourceIndex.data(Qt::UserRole).toInt());
+        qDebug() << "Index : " << sourceIndex.row();
+
+        switch (status) {
+            case S_RED:
+                redNum--;
+                break;
+            case S_BLUE:
+                blueNum--;
+                break;
+            case S_YELLOW:
+                yellowNum--;
+                break;
+        }
+
+        status = S_RED;
+        redNum++;
+
+        m_model->setData(sourceIndex,status,Qt::UserRole);
+    }
+//    g_proxyModel->setDynamicSortFilter(true);
+    updateButtonNum();
 }

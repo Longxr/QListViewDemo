@@ -19,6 +19,18 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void onButtonClicked(QAbstractButton *button);
+    void on_redBtn_clicked();
+
+    void on_allBtn_clicked();
+
+    void on_blueBtn_clicked();
+
+    void on_yellowBtn_clicked();
+
+    void on_setRedBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
     QButtonGroup *m_filterButtonGroup;
@@ -31,6 +43,7 @@ private:
     int yellowNum;
 
     void initData();
+    void updateButtonNum();
 };
 
 #endif // MAINWINDOW_H
