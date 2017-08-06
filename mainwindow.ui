@@ -24,7 +24,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="redBtn">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -37,7 +37,7 @@
      <string>red</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="blueBtn">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -50,7 +50,7 @@
      <string>blue</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="yellowBtn">
     <property name="geometry">
      <rect>
       <x>270</x>
