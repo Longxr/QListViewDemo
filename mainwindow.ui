@@ -38,57 +38,7 @@ background-color: white;
 	border:1px solid #EFEFEF;
 }
 
-verticalScrollBar:vertical
-{
-    width:8px;
-    background:rgba(0,0,0,0%);
-    margin:0px,0px,0px,0px;
-    padding-top:9px;   // 留出9px给上面和下面的箭头
-    padding-bottom:9px;
-}
-QScrollBar::handle:vertical
-{
-    width:8px;
-    background:rgba(0,0,0,25%);
-    border-radius:4px;   // 滚动条两端变成椭圆
-    min-height:20;
-}
-QScrollBar::handle:vertical:hover
-{
-    width:8px;
-    background:rgba(0,0,0,50%);   // 鼠标放到滚动条上的时候，颜色变深
-    border-radius:4px;
-    min-height:20;
-}
-QScrollBar::add-line:vertical   // 这个应该是设置下箭头的，3.png就是箭头
-{
-    height:9px;width:8px;
-    border-image:url(:/images/a/3.png);
-    subcontrol-position:bottom;
-}
-QScrollBar::sub-line:vertical   // 设置上箭头
-{
-    height:9px;width:8px;
-    border-image:url(:/images/a/1.png);
-    subcontrol-position:top;
-}
-QScrollBar::add-line:vertical:hover   // 当鼠标放到下箭头上的时候
-{
-    height:9px;width:8px;
-    border-image:url(:/images/a/4.png);
-    subcontrol-position:bottom;
-}
-QScrollBar::sub-line:vertical:hover  // 当鼠标放到下箭头上的时候
-{
-    height:9px;width:8px;
-    border-image:url(:/images/a/2.png);
-    subcontrol-position:top;
-}
-QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical   // 当滚动条滚动的时候，上面的部分和下面的部分
-{
-    background:rgba(0,0,0,10%);
-    border-radius:4px;
-}</string>
+</string>
     </property>
     <property name="verticalScrollBarPolicy">
      <enum>Qt::ScrollBarAsNeeded</enum>

@@ -9,7 +9,6 @@ typedef enum{
     S_YELLOW,
 } ItemStatus;
 
-// 设备信息
 struct ItemData{
     QString name;
     QString tel;
