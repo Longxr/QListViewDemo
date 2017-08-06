@@ -55,7 +55,7 @@ void MainWindow::initData()
         ItemData itemData;
 
         itemData.name = QString("Name %1").arg(i);
-        itemData.tel = QString("1331234567%1").arg(i);
+        itemData.tel = QString("TEL:1331234567%1").arg(i);
         int randNum = rand()% 4;
         ItemStatus itemStatus;
         switch (randNum) {

@@ -36,8 +36,8 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         QRectF rect;
         rect.setX(option.rect.x());
         rect.setY(option.rect.y());
-        rect.setWidth( option.rect.width());
-        rect.setHeight(option.rect.height());
+        rect.setWidth( option.rect.width()-1);
+        rect.setHeight(option.rect.height()-1);
 
         //QPainterPath画圆角矩形
         const qreal radius = 7;
@@ -52,10 +52,23 @@ void ItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
         path.lineTo(rect.topRight() + QPointF(0, radius));
         path.quadTo(rect.topRight(), rect.topRight() + QPointF(-radius, -0));
 
-        painter->setPen(QPen(Qt::gray));
-        painter->setBrush(Qt::NoBrush);
-        painter->drawPath(path);
-
+        if(option.state.testFlag(QStyle::State_Selected))
+        {
+            painter->setPen(QPen(Qt::blue));
+            painter->setBrush(QColor(229, 241, 255));
+            painter->drawPath(path);
+        }
+        else if(option.state.testFlag(QStyle::State_MouseOver))
+        {
+            painter->setPen(QPen(Qt::green));
+            painter->setBrush(Qt::NoBrush);
+            painter->drawPath(path);
+        }
+        else{
+            painter->setPen(QPen(Qt::gray));
+            painter->setBrush(Qt::NoBrush);
+            painter->drawPath(path);
+        }
 
         //绘制数据位置
         QRect NameRect = QRect(rect.left() +10, rect.top()+10, rect.width()-30, 20);
